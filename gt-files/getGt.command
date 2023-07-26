@@ -7,14 +7,16 @@
 # Oscar Nierstrasz 2023
 # https://creativecommons.org/licenses/by/4.0/
 #
+# https://github.com/onierstrasz/gt-startup/tree/main/gt-files
 
-# This directory: where GT will be installed.
+# This directory, i.e., where GT will be installed.
 D=`dirname "$0"`
 cd "$D"
 
 # Folder where to find the scripts to install.
 F="/Users/oscar/Library/CloudStorage/Dropbox/feenk/gt-files"
 
+# Timestamp for the build folder.
 date=`date "+%Y-%m-%d@%Hh%M"`
 gt="GT-${date}"
 tmp=tmp$$
@@ -27,14 +29,21 @@ trap "echo ERR;   exit" ERR
 
 echo "Creating $gt"
 
+# Temporary folder for the build.
 mkdir $tmp
 cd $tmp
+
+# Download and run the installer script.
 time curl https://dl.feenk.com/scripts/mac.sh | bash
 
+# Move the build to its final location.
 cd ..
 mv $tmp/glamoroustoolkit $gt
 rm -rf $tmp
 
+# Generate a command file to start up GT. (On Mac you can double-click the file.)
+# NB: 1. This will open a Terminal which will display any diagnostics. In case of serious problems, save the Terminal output.
+# 2. The script increases the number of open files allowed with ulimit.
 run="$gt/__startGt.command"
 cat > "$run" <<'eof'
 #! /bin/sh
@@ -46,12 +55,17 @@ ulimit -n 10240
 eof
 chmod 0755 "$run"
 
+# Generate an alias that will appear near the top of the current directory.
+# If you have lots of builds, delete the aliases you don't need.
 ln -s "$gt" "__$gt"
-# open "$gt"
 
+# Copy scripts to add ti the build.
+# makeAliases will generate startup scripts for projects that you are working on.
 cp "$F/__makeAliases.command" "$gt"
+# startup.st is s Smalltalk script of things to run when you start an image.
 cp "$F/startup.st" "$gt"
 
+# Backup the build as a zip file.
 echo zip -q -y -r "$gt.zip" "$gt"
 zip -q -y -r "$gt.zip" "$gt"
 

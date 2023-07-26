@@ -1,7 +1,9 @@
+"This is a sample startup script. It will be run whenever you start up a GT image. Put whatever you like in here."
+
 "Show explicit referenced in compact form."
 LePageToolContentTreeElement showIncomingReferencesInlined.
 
-"Load startup repo if needed."
+"Load my startup repo, if it's not already loaded."
 Smalltalk globals
 	at: #BaselineOfGtStartup
 	ifAbsent: [ Metacello new
@@ -10,4 +12,5 @@ Smalltalk globals
 			load.
 		Smalltalk saveSession ].
 
+"Save this as a fresh image."
 Smalltalk saveAs: 'gt-startup'.
