@@ -6,7 +6,7 @@ LePage >> gtZoomInButtonFor: anAction [
 	^ anAction button
 		tooltip: 'Zoom in';
 		priority: 10;
-		icon: BrGlamorousVectorIcons add;
+		icon: BrGlamorousVectorIcons up;
 		action: [ :aButton :aModel :anEvent | BlGlutinHostSpace zoomFactor: BlGlutinHostSpace zoomFactor * 1.2 ]
 ]
 
@@ -16,6 +16,6 @@ LePage >> gtZoomOutButtonFor: anAction [
 	^ anAction button
 		tooltip: 'Zoom out';
 		priority: 11;
-		icon: BrGlamorousVectorIcons remove;
+		icon: BrGlamorousVectorIcons down;
 		action: [ :aButton :aModel :anEvent | BlGlutinHostSpace zoomFactor: BlGlutinHostSpace zoomFactor / 1.2 ]
 ]
