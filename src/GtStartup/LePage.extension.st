@@ -1,6 +1,17 @@
 Extension { #name : #LePage }
 
 { #category : #'*GtStartup' }
+LePage >> gtCollapseButtonFor: anAction [
+	<lePageAction>
+	^ anAction button
+		tooltip: 'Collapse all';
+		priority: 20;
+		icon: BrGlamorousVectorIcons downwards;
+		action: [ :aButton :aModel :anEvent |
+			aModel pageElement treeElement collapseAll ]
+]
+
+{ #category : #'*GtStartup' }
 LePage >> gtZoomInButtonFor: anAction [
 	<lePageAction>
 	^ anAction button
