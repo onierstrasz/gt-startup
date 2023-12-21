@@ -7,8 +7,10 @@ LePage >> gtCollapseButtonFor: anAction [
 		tooltip: 'Collapse all';
 		priority: 20;
 		icon: BrGlamorousVectorIcons downwards;
-		action: [ :aButton :aModel :anEvent |
-			aModel pageElement treeElement collapseAll ]
+		action: [ :aButton :aModel :anEvent | 
+			aModel pageElement treeElement collapseAll.
+			aModel pageElement snippetsViewModel children
+				do: [ :each | each expanded: false ] ]
 ]
 
 { #category : #'*GtStartup' }
