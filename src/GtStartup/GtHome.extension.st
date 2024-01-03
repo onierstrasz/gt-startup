@@ -7,6 +7,6 @@ GtHome >> oscarSection [
 		title: 'Oscar''s Todos';
 		description: 'Oscar''s Lepiter Database';
 		databaseName: 'Documents/lepiter/default';
-		startPageName: 'ASAP';
+		startPageName: 'ToDo';
 		priority: 8
 ]
