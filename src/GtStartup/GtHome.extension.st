@@ -3,12 +3,12 @@ Extension { #name : #GtHome }
 { #category : #'*GtStartup' }
 GtHome >> demoSection [
 	<gtHomeSection>
-	BaselineOfGToolkitDemos loadLepiter.
-	^ GtHomeStartPageSection new 
+	^ GtHomeStartPageSection new
 		title: 'GT Demos';
 		description: 'GT Demos';
 		databaseName: 'feenkcom/gtoolkit-demos/lepiter';
 		startPageName: 'GToolkitDemos TOC';
+		loadLepiter: [ BaselineOfGToolkitDemos loadLepiter ];
 		priority: 20
 ]
 
