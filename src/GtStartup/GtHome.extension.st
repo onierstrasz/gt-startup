@@ -3,7 +3,6 @@ Extension { #name : #GtHome }
 { #category : #'*GtStartup' }
 GtHome >> demoSection [
 	<gtHomeSection>
-	BaselineOfGToolkitDemos loadLepiter.
 	^ GtHomeStartPageSection new
 		title: 'GT Demos';
 		description: 'GT Demos';
