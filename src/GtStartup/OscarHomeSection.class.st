@@ -1,22 +1,28 @@
 Class {
 	#name : #OscarHomeSection,
-	#superclass : #GtHomeMultiCardPageSection,
+	#superclass : #GtHomeMultiCardSection,
 	#category : #'GtStartup-Sections'
 }
 
 { #category : #accessing }
-OscarHomeSection >> card1ToDo [
+OscarHomeSection >> asapCard [
 	<gtSectionCard>
 	<gtExample>
-	^ self
-		cardTitled: 'Oscar''s Todos'
-		forPageNamed: 'ToDo'
-		withDescription: 'Oscar''s Lepiter Database'
+	^ GtHomeCard new
+		title: 'To do ASAP';
+		priority: 20;
+		page: (LeDatabase primaryDB pageNamed: 'ASAP');
+		yourself
 ]
 
 { #category : #accessing }
-OscarHomeSection >> card2ASAP [
+OscarHomeSection >> todoCard [
 	<gtSectionCard>
 	<gtExample>
-	^ self cardForPageNamed: 'ASAP'
+	^ GtHomeCard new
+		title: 'Oscar''s Todos';
+		description: 'Oscar''s Lepiter Database';
+		priority: 10;
+		page: (LeDatabase primaryDB pageNamed: 'ToDo');
+		yourself
 ]
