@@ -16,6 +16,19 @@ OscarHomeSection >> asapCard [
 ]
 
 { #category : #accessing }
+OscarHomeSection >> gtDemoCard [
+	<gtSectionCard>
+	<gtExample>
+	^ GtLazyHomeCard new
+		title: 'GT Demos';
+		description: 'GT Demos';
+		databaseName: 'feenkcom/gtoolkit-demos/lepiter';
+		pageName: 'GToolkitDemos TOC';
+		loadLepiter: [ BaselineOfGToolkitDemos loadLepiter ];
+		priority: 30
+]
+
+{ #category : #accessing }
 OscarHomeSection >> sectionTitle [
 	^ 'Oscar''s Todos'
 ]
