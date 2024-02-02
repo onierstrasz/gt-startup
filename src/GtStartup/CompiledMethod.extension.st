@@ -7,7 +7,7 @@ CompiledMethod >> nodeForExpression: aString [
 	nodeFound := nil.
 	self ast
 		nodesDo: [ :each | 
-			(astToFind match: each inContext: Dictionary new)
+			astToFind = each
 				ifTrue: [ nodeFound := each.
 					^ nodeFound ] ].
 	^ nodeFound
