@@ -16,6 +16,11 @@ OscarHomeSection >> asapCard [
 ]
 
 { #category : #accessing }
+OscarHomeSection >> sectionTitle [
+	^ 'Oscar''s Todos'
+]
+
+{ #category : #accessing }
 OscarHomeSection >> todoCard [
 	<gtSectionCard>
 	<gtExample>
