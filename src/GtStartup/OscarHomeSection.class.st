@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 OscarHomeSection >> asapCard [
-	<gtSectionCard>
+	"<gtSectionCard>"
 	<gtExample>
 	^ GtHomeCard page
 		title: 'To do ASAP';
