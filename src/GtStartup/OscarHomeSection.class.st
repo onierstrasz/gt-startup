@@ -13,6 +13,7 @@ OscarHomeSection >> asapCard [
 		priority: 20;
 		pageName: 'ASAP';
 		databaseName: LeDatabase primaryDB databaseName;
+		assertInvariant;
 		yourself
 ]
 
@@ -26,7 +27,9 @@ OscarHomeSection >> gtDemoCard [
 		databaseName: 'feenkcom/gtoolkit-demos/lepiter';
 		pageName: 'GToolkitDemos TOC';
 		loadLepiter: [ BaselineOfGToolkitDemos loadLepiter ];
-		priority: 30
+		priority: 30;
+		assertInvariant;
+		yourself
 ]
 
 { #category : #accessing }
@@ -44,5 +47,6 @@ OscarHomeSection >> todoCard [
 		priority: 10;
 		pageName: 'ToDo';
 		databaseName: LeDatabase primaryDB databaseName;
+		assertInvariant;
 		yourself
 ]
