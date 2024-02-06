@@ -5,6 +5,7 @@ GtHome >> oscarSection [
 	<gtHomeSection>
 	<gtExample>
 	<noTest>
-	^ OscarHomeSection new 
-		priority: 10.
+	^ OscarHomeSection new
+		priority: 10;
+		yourself
 ]

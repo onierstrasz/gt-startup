@@ -8,10 +8,11 @@ Class {
 OscarHomeSection >> asapCard [
 	<gtSectionCard>
 	<gtExample>
-	^ GtHomeCard new
+	^ GtHomeCard page
 		title: 'To do ASAP';
 		priority: 20;
-		page: (LeDatabase primaryDB pageNamed: 'ASAP');
+		pageName: 'ASAP';
+		databaseName: LeDatabase primaryDB databaseName;
 		yourself
 ]
 
@@ -19,7 +20,7 @@ OscarHomeSection >> asapCard [
 OscarHomeSection >> gtDemoCard [
 	<gtSectionCard>
 	<gtExample>
-	^ GtLazyHomeCard new
+	^ GtHomeCard lazy
 		title: 'GT Demos';
 		description: 'GT Demos';
 		databaseName: 'feenkcom/gtoolkit-demos/lepiter';
@@ -37,10 +38,11 @@ OscarHomeSection >> sectionTitle [
 OscarHomeSection >> todoCard [
 	<gtSectionCard>
 	<gtExample>
-	^ GtHomeCard new
+	^ GtHomeCard page
 		title: 'Oscar''s Todos';
 		description: 'Oscar''s Lepiter Database';
 		priority: 10;
-		page: (LeDatabase primaryDB pageNamed: 'ToDo');
+		pageName: 'ToDo';
+		databaseName: LeDatabase primaryDB databaseName;
 		yourself
 ]
