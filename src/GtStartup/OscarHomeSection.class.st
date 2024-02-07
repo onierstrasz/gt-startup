@@ -5,19 +5,6 @@ Class {
 }
 
 { #category : #accessing }
-OscarHomeSection >> asapCard [
-	<gtSectionCard>
-	<gtExample>
-	^ GtHomeCard page
-		title: 'To do ASAP';
-		priority: 20;
-		pageName: 'ASAP';
-		databaseName: LeDatabase primaryDB databaseName;
-		assertInvariant;
-		yourself
-]
-
-{ #category : #accessing }
 OscarHomeSection >> gtDemoCard [
 	<gtSectionCard>
 	<gtExample>
