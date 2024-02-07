@@ -20,6 +20,25 @@ OscarHomeSection >> gtDemoCard [
 ]
 
 { #category : #accessing }
+OscarHomeSection >> gtShortsCard [
+	<gtSectionCard>
+	<gtExample>
+	(self repoIsPresent: 'gtoolkit-shorts') ifTrue: [ ^ GtHomeCard empty ].
+	^ GtHomeCard jobs
+		title: 'GT Shorts';
+		description: 'Load the GT Shorts repo and database';
+		priority: 50;
+		jobs: {'Loading gtoolkit-shorts repo'
+					-> [ Metacello new
+							baseline: 'GtoolkitShorts';
+							repository: 'github://feenkcom/gtoolkit-shorts:main/src';
+							load ].
+				'Loading GtoolkitShorts lepiter'
+					-> [ #BaselineOfGtoolkitShorts asClass loadLepiter ]};
+		yourself
+]
+
+{ #category : #accessing }
 OscarHomeSection >> sectionTitle [
 	^ 'Oscar''s Todos'
 ]
