@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 OscarHomeSection >> asapCard [
-	"<gtSectionCard>"
+	<gtSectionCard>
 	<gtExample>
 	^ GtHomeCard page
 		title: 'To do ASAP';
@@ -49,4 +49,11 @@ OscarHomeSection >> todoCard [
 		databaseName: LeDatabase primaryDB databaseName;
 		assertInvariant;
 		yourself
+]
+
+{ #category : #accessing }
+OscarHomeSection >> updateGtWorld [
+	<gtExample>
+	^ GtWorld allInstances
+		do: [ :aGtWorld | aGtWorld root children first home updateWidget ]
 ]
