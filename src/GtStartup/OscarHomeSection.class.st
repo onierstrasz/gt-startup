@@ -28,13 +28,42 @@ OscarHomeSection >> gtShortsCard [
 		title: 'GT Shorts';
 		description: 'Load the GT Shorts repo and database';
 		priority: 50;
-		jobs: {'Loading gtoolkit-shorts repo'
-					-> [ Metacello new
-							baseline: 'GtoolkitShorts';
-							repository: 'github://feenkcom/gtoolkit-shorts:main/src';
-							load ].
-				'Loading GtoolkitShorts lepiter'
-					-> [ #BaselineOfGtoolkitShorts asClass loadLepiter ]};
+		jobs: {
+			[ Metacello new
+					baseline: 'GtoolkitShorts';
+					repository: 'github://feenkcom/gtoolkit-shorts:main/src';
+					load ].
+			[ #BaselineOfGtoolkitShorts asClass loadLepiter ]};
+		yourself
+]
+
+{ #category : #accessing }
+OscarHomeSection >> gtVamosCard [
+	"Open the VAMOS slideshow if it is present, else load the missing repos and lepiter DB."
+
+	<gtSectionCard>
+	<gtExample>
+	Smalltalk globals
+		at: #FkEmbracingVariabilitySlideshow
+		ifPresent: [ ^ GtHomeCard jobs
+				title: 'VAMOS 2024';
+				description: 'Open the VAMOS slideshow';
+				priority: 20;
+				job: [ GtPresenterSlideShow openInSpace: #FkEmbracingVariabilitySlideshow asClass ];
+				yourself ].
+	^ GtHomeCard jobs
+		title: 'VAMOS 2024';
+		description: 'Load the feenk-stories and Vamos repos';
+		priority: 20;
+		jobs: {[ Metacello new
+					repository: 'github://feenkcom/feenk-stories:main/src';
+					baseline: 'FeenkStories';
+					load ].
+				[ #BaselineOfFeenkStories asClass loadLepiter ].
+				[ Metacello new
+					repository: 'github://feenkcom/feenk-stories:main/src';
+					baseline: 'FeenkEmbracingVariabilityVAMOS2024';
+					load ]};
 		yourself
 ]
 
