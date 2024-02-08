@@ -10,7 +10,7 @@ OscarHomeSection >> gtDemoCard [
 	<gtExample>
 	^ GtHomeCard lazy
 		title: 'GT Demos';
-		description: 'GT Demos';
+		description: 'Go to the GT Demos Lepiter database (load if needed)';
 		databaseName: 'feenkcom/gtoolkit-demos/lepiter';
 		pageName: 'GToolkitDemos TOC';
 		loadLepiter: [ BaselineOfGToolkitDemos loadLepiter ];
@@ -53,7 +53,7 @@ OscarHomeSection >> gtVamosCard [
 				yourself ].
 	^ GtHomeCard jobs
 		title: 'VAMOS 2024';
-		description: 'Load the feenk-stories and Vamos repos';
+		description: 'Open the VAMOS slideshow after loading the feenk-stories and Vamos repos';
 		priority: 20;
 		jobs: {[ Metacello new
 					repository: 'github://feenkcom/feenk-stories:main/src';
@@ -64,7 +64,8 @@ OscarHomeSection >> gtVamosCard [
 					repository: 'github://feenkcom/feenk-stories:main/src';
 					baseline: 'FeenkEmbracingVariabilityVAMOS2024';
 					load ].
-				[ self updateGtWorld ]};
+				[ self updateGtWorld ].
+				[ GtPresenterSlideShow openInSpace: #FkEmbracingVariabilitySlideshow asClass ]};
 		yourself
 ]
 
