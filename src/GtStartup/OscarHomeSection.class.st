@@ -63,7 +63,8 @@ OscarHomeSection >> gtVamosCard [
 				[ Metacello new
 					repository: 'github://feenkcom/feenk-stories:main/src';
 					baseline: 'FeenkEmbracingVariabilityVAMOS2024';
-					load ]};
+					load ].
+				[ self updateGtWorld ]};
 		yourself
 ]
 
