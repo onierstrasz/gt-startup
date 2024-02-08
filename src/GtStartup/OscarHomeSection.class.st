@@ -24,48 +24,42 @@ OscarHomeSection >> gtShortsCard [
 	<gtSectionCard>
 	<gtExample>
 	(self repoIsPresent: 'gtoolkit-shorts') ifTrue: [ ^ GtHomeCard empty ].
-	^ GtHomeCard jobs
+	^ GtHomeCard job
 		title: 'GT Shorts';
 		description: 'Load the GT Shorts repo and database';
 		priority: 50;
-		jobs: {
-			[ Metacello new
-					baseline: 'GtoolkitShorts';
-					repository: 'github://feenkcom/gtoolkit-shorts:main/src';
-					load ].
-			[ #BaselineOfGtoolkitShorts asClass loadLepiter ]};
+		block: [ Smalltalk globals
+				at: #BaselineOfGtoolkitShorts
+				ifAbsent: [ Metacello new
+						baseline: 'GtoolkitShorts';
+						repository: 'github://feenkcom/gtoolkit-shorts:main/src';
+						load.
+					#BaselineOfGtoolkitShorts asClass loadLepiter.
+					self updateGtWorld ] ];
 		yourself
 ]
 
 { #category : #accessing }
 OscarHomeSection >> gtVamosCard [
 	"Open the VAMOS slideshow if it is present, else load the missing repos and lepiter DB."
-
 	<gtSectionCard>
 	<gtExample>
-	Smalltalk globals
-		at: #FkEmbracingVariabilitySlideshow
-		ifPresent: [ ^ GtHomeCard jobs
-				title: 'VAMOS 2024';
-				description: 'Open the VAMOS slideshow';
-				priority: 20;
-				job: [ GtPresenterSlideShow openInSpace: #FkEmbracingVariabilitySlideshow asClass ];
-				yourself ].
-	^ GtHomeCard jobs
+	^ GtHomeCard job
 		title: 'VAMOS 2024';
-		description: 'Open the VAMOS slideshow after loading the feenk-stories and Vamos repos';
-		priority: 20;
-		jobs: {[ Metacello new
-					repository: 'github://feenkcom/feenk-stories:main/src';
-					baseline: 'FeenkStories';
-					load ].
-				[ #BaselineOfFeenkStories asClass loadLepiter ].
-				[ Metacello new
-					repository: 'github://feenkcom/feenk-stories:main/src';
-					baseline: 'FeenkEmbracingVariabilityVAMOS2024';
-					load ].
-				[ self updateGtWorld ].
-				[ GtPresenterSlideShow openInSpace: #FkEmbracingVariabilitySlideshow asClass ]};
+		description: 'Open the VAMOS slideshow (load the feenk-stories and Vamos repos, if needed)';
+		priority: 50;
+		block: [ Smalltalk globals
+				at: #FkEmbracingVariabilitySlideshow
+				ifAbsent: [ Metacello new
+						repository: 'github://feenkcom/feenk-stories:main/src';
+						baseline: 'FeenkStories';
+						load.
+					#BaselineOfFeenkStories asClass loadLepiter.
+					Metacello new
+						repository: 'github://feenkcom/feenk-stories:main/src';
+						baseline: 'FeenkEmbracingVariabilityVAMOS2024';
+						load ].
+			GtPresenterSlideShow openInSpace: #FkEmbracingVariabilitySlideshow asClass ];
 		yourself
 ]
 
