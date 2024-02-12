@@ -41,7 +41,7 @@ OscarHomeSection >> gtShortsCard [
 
 { #category : #accessing }
 OscarHomeSection >> gtStuffCard [
-	<gtSectionCard>
+	"<gtSectionCard>"
 	<gtExample>
 	(self repoIsPresent: 'gt-stuff') ifTrue: [ ^ GtHomeCard empty ].
 	^ GtHomeCard job
