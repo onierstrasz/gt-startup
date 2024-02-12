@@ -40,9 +40,29 @@ OscarHomeSection >> gtShortsCard [
 ]
 
 { #category : #accessing }
+OscarHomeSection >> gtStuffCard [
+	<gtSectionCard>
+	<gtExample>
+	(self repoIsPresent: 'gt-stuff') ifTrue: [ ^ GtHomeCard empty ].
+	^ GtHomeCard job
+		title: 'GT Stuff';
+		description: 'Load the GT stuff repo and database';
+		priority: 50;
+		block: [ Smalltalk globals
+				at: #BaselineOfGtStuff
+				ifAbsent: [ Metacello new
+						repository: 'github://onierstrasz/gt-stuff:main/src';
+						baseline: 'GtStuff';
+						load.
+					#BaselineOfGtStuff asClass loadLepiter.
+					self updateGtWorld ] ];
+		yourself
+]
+
+{ #category : #accessing }
 OscarHomeSection >> gtVamosCard [
 	"Open the VAMOS slideshow if it is present, else load the missing repos and lepiter DB."
-	<gtSectionCard>
+	"<gtSectionCard>"
 	<gtExample>
 	^ GtHomeCard job
 		title: 'VAMOS 2024';
