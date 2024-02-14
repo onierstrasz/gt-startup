@@ -5,6 +5,26 @@ Class {
 }
 
 { #category : #accessing }
+OscarHomeSection >> batBern50Card [
+	"<gtSectionCard>"
+
+	<gtExample>
+	^ GtHomeCard job
+		title: 'BATbern 50';
+		description: 'Open the BATbern 50 slideshow (load GtTalks repo if needed)';
+		priority: 50;
+		block: [ Smalltalk globals
+				at: #MindTheGapSlideshow
+				ifAbsent: [ Metacello new
+						baseline: 'GtTalks';
+						repository: 'github://onierstrasz/gt-talks:main/src';
+						load.
+					#BaselineOfGtTalks asClass loadLepiter ].
+			GtPresenterSlideShow openInSpace: #MindTheGapSlideshow asClass ];
+		yourself
+]
+
+{ #category : #accessing }
 OscarHomeSection >> gtDemoCard [
 	<gtSectionCard>
 	<gtExample>
